@@ -5,8 +5,8 @@ let b = 2;
 
 console.log(a + b);
 
-function calcular(a,b,o){
-    return eval(`${a} ${o} ${b}`);
+function calcular(a, b, o) {
+  return eval(`${a} ${o} ${b}`);
 }
 
-console.log(calcular(13, 49, '*'));
+console.log(calcular(13, 49, "*"));
