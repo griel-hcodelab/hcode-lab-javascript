@@ -1,9 +1,9 @@
 console.log("Olá Mundo");
 
-let a = 1;
+let a = 75;
 let b = 2;
 
-console.log(a + b);
+console.log(a * b);
 
 function calcular(a, b, o) {
   return eval(`${a} ${o} ${b}`);
