@@ -5,10 +5,10 @@ const pessoa = {
   favLang: ["PHP", "JavaScript"],
   idade: 31,
   mostrarNomeCompleto: function () {
-    return `${this.primeiroNome}`;
+    return `${this.primeiroNome}`; //Funções não podem ir para um json stringify
   },
 };
 
-console.log(JSON.stringify(pessoa, null, 4));
+console.log(JSON.stringify(pessoa));
 //Nome do json, se havera substituição, nível da tabulação
 console.log(pessoa);
