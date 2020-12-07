@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+      }
+      #caixa {
+        background-color: red;
+      }
+      #caixa2 {
+        background-color: brown;
+      }
+      .nota-verde {
+        color: green;
+      }
+      .nota-vermelha {
+        color: red;
+      }
+    </style>
+  </head>
+  <body class="vermelho">
+    <div id="caixa"></div>
+    <div id="caixa2"></div>
+    <h2>
+      Você realizou a prova do Hcode Lab. Seu aproveitamento foi:
+      <span>70%</span>
+    </h2>
+
+    <form>
+      <input type="text" name="nome" id="nome" />
+      <button type="button">Enviar</button>
+    </form>
+
+    <script>
+      /*console.dir(document.body);
+
+      console.log(document.getElementById("caixa"));
+      console.log(document.getElementsByTagName("div")[0]);
+      console.log(document.getElementsByClassName("vermelho"));
+      console.log(document.querySelector("input[type=text]"));
+      console.log(document.querySelectorAll("div"));*/
+
+      const nota = document.querySelector("h2 span");
+
+      if (nota.innerText <= "70%") {
+        nota.className = "nota-vermelha";
+      } else {
+        nota.className = "nota-verde";
+      }
+    </script>
+  </body>
+</html>
