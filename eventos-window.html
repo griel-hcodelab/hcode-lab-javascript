@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <button type="button">Não Clique Aqui!</button>
+    <button type="button" id="pode">Pode Clicar!</button>
+
+    <script>
+      window.addEventListener("load", () => {
+        console.log("Carregado");
+      });
+
+      window.addEventListener("resize", (evento) => {
+        console.log("Tamanho de dentro", window.innerWidth);
+        console.log("Tamanho de fora", window.outerWidth);
+      });
+
+      window.addEventListener("focus", () => {
+        console.log("Você está aqui na janela");
+      });
+      window.addEventListener("blur", () => {
+        console.log("Você saiu da janela");
+      });
+
+      const botoes = document.querySelectorAll("button");
+      let valor = new Number(1);
+
+      [...botoes].forEach((botao) => {
+        botao.addEventListener("click", (evento) => {
+          if (!evento.altKey) {
+            switch (evento.target.id) {
+              case "pode":
+                console.log(`Oba! Você clicou! 😁 Você clicou ${valor} vezes!`);
+                valor++;
+                break;
+              default:
+                console.log(`Porque clicou? 🤬 Você clicou ${valor} vezes!`);
+                valor++;
+                break;
+            }
+          } else if (evento.altKey && evento.ctrlKey) {
+            switch (evento.target.id) {
+              case "pode":
+                console.log(
+                  `Caramba! Você apertou CTRL e ALT antes de clicar!! Você clicou ${valor} vezes!`
+                );
+                valor++;
+                break;
+              default:
+                console.log(
+                  `Tudo isso é medo? Apertou CTRL e ALT e clicou!! 🤬 Você clicou ${valor} vezes!`
+                );
+                valor++;
+                break;
+            }
+          } else {
+            switch (evento.target.id) {
+              case "pode":
+                console.log(
+                  `Você apertou o ALT antes de clicar? 🤔 Você clicou ${valor} vezes!`
+                );
+                valor++;
+                break;
+              default:
+                console.log(
+                  `Porque clicou com o ALT? 🤬 Você clicou ${valor} vezes!`
+                );
+                valor++;
+                break;
+            }
+          }
+
+          console.log(evento);
+          console.log(evento.altKey);
+        });
+      });
+    </script>
+  </body>
+</html>
