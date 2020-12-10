@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <p><span id="min">00</span>:<span id="sec">00</span></p>
+    <button type="button">Desligar</button>
+    <script>
+      let value = new Number(0);
+      const tempo = setTimeout(() => {
+        console.log("Passou 5 segundos");
+      }, 5000);
+
+      const relogio = setInterval(() => {
+        document.querySelector("#sec").innerText = ++value;
+      }, 1000);
+
+      const pararInterval = setTimeout(() => {
+        clearInterval(relogio);
+      }, 10000);
+
+      document.querySelector("button").addEventListener("click", function () {
+        clearInterval(relogio);
+        clearTimeout(tempo);
+      });
+    </script>
+  </body>
+</html>
