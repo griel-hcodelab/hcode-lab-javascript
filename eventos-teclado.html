@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <input type="text" name="texto" id="texto1" />
+    <input type="text" name="texto" id="texto2" />
+
+    <script>
+      const input = document.querySelectorAll("input");
+
+      [...input].forEach((campo) => {
+        campo.addEventListener("mouseenter", (e) => {
+          e.target.focus();
+          console.log("O mouse entrou no campo");
+        });
+        campo.addEventListener("keydown", (e) => {
+          console.log(e.type);
+          console.log("Você apertou uma letra");
+          if (e.ctrlKey) {
+            console.log("Você apertou uma letra com o CTRL");
+          }
+        });
+        campo.addEventListener("keypress", (e) => {
+          console.log(e.type);
+          console.log("Você apertou uma letra mas esse evento foi depreciado");
+          if (e.shiftKey) {
+            console.log("Você apertou uma letra com o CTRL");
+          }
+        });
+        campo.addEventListener("keyup", (e) => {
+          console.log(e.type);
+          console.log("VoCê soltou uma letra");
+        });
+      });
+    </script>
+  </body>
+</html>
