@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos</title>
+  </head>
+  <body>
+    <button type="button">Não Clique Aqui!</button>
+    <button type="button" id="pode">Pode Clicar!</button>
+
+    <div
+      style="display: none; width: 200px; height: 200px; background-color: red"
+    >
+      aaaaa
+    </div>
+
+    <script>
+      const botoes = document.querySelectorAll("button");
+
+      [...botoes].forEach((botao) => {
+        botao.addEventListener("contextmenu", (evento) => {
+          evento.preventDefault();
+          document.querySelector("div").style.display = "flex";
+        });
+
+        botao.addEventListener("mouseenter", (evento) => {
+          console.log(evento.type);
+          console.log("Mouse entrou no botão");
+        });
+        botao.addEventListener("mouseleave", (evento) => {
+          console.log(evento.type);
+          console.log("Mouse saiu do botão");
+        });
+        botao.addEventListener("mousemove", (evento) => {
+          console.log(evento.type);
+        });
+        botao.addEventListener("mousedown", (evento) => {
+          console.log(evento.type);
+        });
+        botao.addEventListener("mouseup", (evento) => {
+          console.log(evento.type);
+        });
+        botao.addEventListener("click", (evento) => {
+          console.log(evento.type);
+        });
+      });
+    </script>
+  </body>
+</html>
