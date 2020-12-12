@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo</title>
+  </head>
+  <body>
+    <button type="button" id="somar">Somar</button>
+    <button type="button" id="multiplicar">Multiplicar</button>
+    <button type="button" id="regra3">Regra de Três</button>
+
+    <script type="module">
+      const somarEl = document.querySelector("#somar");
+      const multiplicarEl = document.querySelector("#multiplicar");
+      const regra3El = document.querySelector("#regra3");
+
+      somarEl.addEventListener("click", (e) => {
+        import("./calculos.js").then(({ somar }) => {
+          console.log(somar(10, 20));
+        });
+      });
+      multiplicarEl.addEventListener("click", (e) => {
+        import("./calculos.js").then(({ multiplicar }) => {
+          console.log(multiplicar(7, 8));
+        });
+      });
+      regra3El.addEventListener("click", (e) => {
+        import("./calculos.js").then(({ regra3 }) => {
+          console.log(regra3(1000, 500, 100));
+        });
+      });
+    </script>
+  </body>
+</html>
