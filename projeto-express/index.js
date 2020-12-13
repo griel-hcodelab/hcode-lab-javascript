@@ -1,3 +1,4 @@
+const { response } = require("express");
 const express = require("express"); //Dentro da const express, ira carregar as dependencias do express dentro do node_modules
 
 const servidor = express(); //A const servidor irá invocar a função do express para, então, rodar
@@ -32,6 +33,7 @@ servidor.get("/produtos", function (request, response) {
     if (erro) {
       console.error(erro);
     } else {
+      res.setHeader("Content-Type", "application/json");
       response.json(dados);
     }
   });
@@ -50,4 +52,37 @@ servidor.post("/produtos", function (req, res) {
       res.status(200).json(novoProduto);
     }
   });
+});
+
+servidor.get("/produtos/:id", (req, res) => {
+  db.findOne({ _id: req.params.id }).exec((err, dados) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(dados);
+    }
+  });
+});
+
+//Método put serve para alterar dados
+//O put espera a url com a :variavel
+servidor.put("/produtos/:id", (req, res) => {
+  db.update(
+    { _id: req.params.id },
+    //o db.update espera qual o campo irá ser atualizado
+    req.body,
+    //Informo os dados que serão atalizados
+    (erro) => {
+      //e se houver algum erro
+      if (erro) {
+        console.error(erro);
+      } else {
+        res.setHeader("Content-Type", "application/json");
+        res.status(200).json({
+          mensagem: `Produto atualizado com sucesso: ${req.params.id}`,
+        });
+      }
+    }
+  );
 });
