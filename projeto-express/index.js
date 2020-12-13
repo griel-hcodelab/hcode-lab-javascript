@@ -33,7 +33,7 @@ servidor.get("/produtos", function (request, response) {
     if (erro) {
       console.error(erro);
     } else {
-      res.setHeader("Content-Type", "application/json");
+      response.setHeader("Content-Type", "application/json");
       response.json(dados);
     }
   });
@@ -82,6 +82,23 @@ servidor.put("/produtos/:id", (req, res) => {
         res.status(200).json({
           mensagem: `Produto atualizado com sucesso: ${req.params.id}`,
         });
+      }
+    }
+  );
+});
+
+servidor.delete("/produtos/:id", (req, res) => {
+  db.remove(
+    { _id: req.params.id },
+    {
+      /* Linhas a apagar */
+    },
+    (err, registroRemovidos) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.setHeader("Content-Type", "application/json");
+        res.status(200).json(registroRemovidos);
       }
     }
   );
