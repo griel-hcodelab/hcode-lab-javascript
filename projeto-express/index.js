@@ -24,6 +24,10 @@ servidor.use(
     extended: true, //Fazer com que o servidor consiga ler os dados enviados via post
   })
 );
+servidor.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+}); //Permitir que o servidor envie dados para qualquer fonte que solicitar
 
 //Request: São as solicitações feitas, por exemplo, alguma variável enviada pelo usuário
 //Response: O que será retornado ao navegador
